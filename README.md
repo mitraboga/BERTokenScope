@@ -258,39 +258,11 @@ This section reflects a real production concern:
 
 ---
 
-## Enhanced Version: BERTokenScope
-
-BERTokenScope expands that foundation into a more complete and realistic NLP platform.
-
-It adds:
-
-- an interactive Streamlit dashboard
-- a FastAPI backend
-- structured NLP services
-- financial text intelligence
-- embedding exploration
-- explainability reports
-- counterfactual token analysis
-- model comparison tools
-- runtime benchmarking
-- local run tracking
-- Docker Compose support
-- API versioning
-- safe fallback behavior
-- testable components that do not require model downloads
-
-In other words:
-
-> CS50AI Attention taught the foundation.  
-> BERTokenScope turns that foundation into an industry-style AI system.
-
----
-
 # ✨ What BERTokenScope Does
 
 ## 1. Attention Explorer
 
-The Attention Explorer helps inspect transformer attention layer by layer and head by head.
+The Attention Explorer helps inspect the transformer attention layer by layer and head by head.
 
 It allows users to study how tokens attend to one another across the model.
 
@@ -305,7 +277,7 @@ It allows users to study how tokens attend to one another across the model.
 ### Example Use Cases
 
 - Explore how BERT attends to verbs and objects.
-- Inspect how financial risk words connect to surrounding context.
+- Inspect how financial risk words connect to the surrounding context.
 - Compare attention patterns between neutral and negative statements.
 - Use attention as a teaching tool for transformer internals.
 
@@ -313,7 +285,7 @@ It allows users to study how tokens attend to one another across the model.
 
 ## 2. Masked Word Lab
 
-The Masked Word Lab uses BERT-style masked language modeling.
+The Masked Word Lab uses BERT-style masked language modelling.
 
 Users provide a sentence containing `[MASK]`, and the model predicts the most likely replacement words.
 
@@ -334,11 +306,11 @@ profit
 
 ### Why This Matters
 
-Masked language modeling helps show how BERT understands context.
+Masked language modelling helps show how BERT understands context.
 
 The model is not just guessing a random word.
 
-It is using surrounding tokens to infer what word best fits the sentence.
+It uses surrounding tokens to infer what word best fits the sentence.
 
 This is the same foundational idea behind many modern NLP systems.
 
@@ -1310,7 +1282,7 @@ This project directly extends the transformer-based NLP and attention concepts i
 | Manual Interpretation | Structured NLP Intelligence Workflow |
 | Course Assignment | Production-Style Transformer Explainability Platform |
 
-BERTokenScope demonstrates how foundational transformer and attention concepts can scale into a production-oriented NLP explainability system for analyzing language, context, financial tone, and token-level model behavior.
+BERTokenScope demonstrates how foundational transformer and attention concepts can scale into a production-oriented NLP explainability system for analyzing language, context, financial tone, and token-level model behaviour.
 
 ---
 
