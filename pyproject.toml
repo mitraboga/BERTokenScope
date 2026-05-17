@@ -1,0 +1,42 @@
+[project]
+name = "ber-tokenscope"
+version = "0.1.0"
+description = "Transformer explainability platform for attention visualization and financial NLP intelligence."
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "smoke: tests that verify running services or container wiring",
+    "load: lightweight load-test scaffolding, skipped in default CI unless explicitly selected",
+    "contract: API contract and OpenAPI stability tests",
+    "regression: NLP behavior regression fixtures",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+no_implicit_optional = true
+check_untyped_defs = false
+exclude = [
+    "tests/",
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv"]
+skips = ["B101"]

@@ -1,0 +1,49 @@
+models:
+  masked_lm: bert-base-uncased
+  sentence_embedding: sentence-transformers/all-MiniLM-L6-v2
+  financial_sentiment: ProsusAI/finbert
+
+runtime:
+  top_k: 5
+  max_sequence_length: 128
+  attention_rollout_discard_ratio: 0.0
+
+artifacts:
+  run_dir: artifacts/runs
+  max_history: 100
+
+database:
+  url: sqlite:///artifacts/bertscope.db
+
+model_serving:
+  cache_dir: artifacts/model-cache
+  allow_downloads: false
+  inference_timeout_seconds: 30
+  warmup_on_start: false
+
+service:
+  environment: development
+  api_host: 0.0.0.0
+  api_port: 8788
+  dashboard_port: 8501
+  public_base_url: http://localhost:8501
+  worker_concurrency: 1
+
+auth:
+  enabled: true
+  allow_test_bypass: false
+  api_keys: []
+
+security:
+  allowed_origins:
+    - http://localhost:8501
+  max_request_bytes: 1000000
+  rate_limit_requests: 120
+  rate_limit_window_seconds: 60
+  enable_security_headers: true
+
+governance:
+  redact_artifacts: true
+  retention_days: 30
+  audit_log_path: artifacts/audit/audit.jsonl
+  financial_disclaimer: BERTScope outputs are analytical model signals, not financial advice.

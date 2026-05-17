@@ -1,0 +1,58 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dev dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Ruff lint
+        run: ruff check .
+      - name: Ruff format check
+        run: ruff format --check .
+      - name: Mypy type check
+        run: mypy api app attention ber_tokenscope embeddings explainability financial_nlp model_comparison model_serving observability security deployment persistence
+      - name: Bandit security scan
+        run: bandit -q -r api app attention ber_tokenscope embeddings explainability financial_nlp model_comparison model_serving observability security deployment persistence
+      - name: Dependency audit
+        run: pip-audit
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: pytest
+      - name: Contract tests
+        run: pytest -m contract
+      - name: Regression tests
+        run: pytest -m regression
+      - name: Compile check
+        run: python -m compileall api app attention ber_tokenscope embeddings explainability financial_nlp governance model_comparison model_serving observability security deployment persistence
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Docker Compose config
+        run: docker compose config --quiet
+      - name: Docker build
+        run: docker build -t bertscope:${{ github.sha }} .

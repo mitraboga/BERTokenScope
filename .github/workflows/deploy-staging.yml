@@ -1,0 +1,19 @@
+name: deploy-staging
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Container image tag to deploy"
+        required: true
+        default: "latest"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deployment plan
+        run: |
+          echo "Deploy ghcr.io/${{ github.repository }}/bertscope:${{ inputs.image_tag }} to staging."
+          echo "Wire this step to your cloud provider once credentials are configured."

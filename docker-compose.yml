@@ -1,0 +1,104 @@
+services:
+  api:
+    build: .
+    command: gunicorn api.main:app -c deployment/gunicorn_conf.py
+    ports:
+      - "8788:8788"
+    volumes:
+      - ./artifacts:/app/artifacts
+      - model-cache:/app/artifacts/model-cache
+    environment:
+      - BERTSCOPE_ENVIRONMENT=${BERTSCOPE_ENVIRONMENT:-production}
+      - BERTSCOPE_AUTH_ENABLED=true
+      - BERTSCOPE_API_KEY=${BERTSCOPE_API_KEY:-change-me-before-deploy}
+      - BERTSCOPE_API_KEY_ID=${BERTSCOPE_API_KEY_ID:-compose-admin}
+      - BERTSCOPE_API_KEY_ROLE=${BERTSCOPE_API_KEY_ROLE:-admin}
+      - BERTSCOPE_API_PORT=8788
+      - BERTSCOPE_DATABASE_URL=${BERTSCOPE_DATABASE_URL:-sqlite:///artifacts/bertscope.db}
+      - BERTSCOPE_MODEL_CACHE_DIR=${BERTSCOPE_MODEL_CACHE_DIR:-artifacts/model-cache}
+      - BERTSCOPE_ALLOW_MODEL_DOWNLOADS=${BERTSCOPE_ALLOW_MODEL_DOWNLOADS:-false}
+      - BERTSCOPE_INFERENCE_TIMEOUT_SECONDS=${BERTSCOPE_INFERENCE_TIMEOUT_SECONDS:-30}
+      - BERTSCOPE_ALLOWED_ORIGINS=${BERTSCOPE_ALLOWED_ORIGINS:-http://localhost:8501}
+      - BERTSCOPE_MAX_REQUEST_BYTES=${BERTSCOPE_MAX_REQUEST_BYTES:-1000000}
+      - BERTSCOPE_RATE_LIMIT_REQUESTS=${BERTSCOPE_RATE_LIMIT_REQUESTS:-120}
+      - BERTSCOPE_RATE_LIMIT_WINDOW_SECONDS=${BERTSCOPE_RATE_LIMIT_WINDOW_SECONDS:-60}
+      - BERTSCOPE_REDACT_ARTIFACTS=${BERTSCOPE_REDACT_ARTIFACTS:-true}
+      - BERTSCOPE_RETENTION_DAYS=${BERTSCOPE_RETENTION_DAYS:-30}
+      - BERTSCOPE_AUDIT_LOG_PATH=${BERTSCOPE_AUDIT_LOG_PATH:-artifacts/audit/audit.jsonl}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8788/ready', timeout=3).read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    depends_on:
+      redis:
+        condition: service_started
+
+  dashboard:
+    build: .
+    command: streamlit run app/streamlit_app.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./artifacts:/app/artifacts
+      - model-cache:/app/artifacts/model-cache
+    environment:
+      - BERTSCOPE_ENVIRONMENT=${BERTSCOPE_ENVIRONMENT:-production}
+      - BERTSCOPE_AUTH_ENABLED=true
+      - BERTSCOPE_PUBLIC_BASE_URL=${BERTSCOPE_PUBLIC_BASE_URL:-http://localhost:8501}
+      - BERTSCOPE_DATABASE_URL=${BERTSCOPE_DATABASE_URL:-sqlite:///artifacts/bertscope.db}
+      - BERTSCOPE_MODEL_CACHE_DIR=${BERTSCOPE_MODEL_CACHE_DIR:-artifacts/model-cache}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=3).read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    depends_on:
+      api:
+        condition: service_started
+
+  worker:
+    build: .
+    command: python -m deployment.worker
+    volumes:
+      - ./artifacts:/app/artifacts
+      - model-cache:/app/artifacts/model-cache
+    environment:
+      - BERTSCOPE_ENVIRONMENT=${BERTSCOPE_ENVIRONMENT:-production}
+      - BERTSCOPE_AUTH_ENABLED=true
+      - BERTSCOPE_WORKER_CONCURRENCY=${BERTSCOPE_WORKER_CONCURRENCY:-1}
+      - BERTSCOPE_DATABASE_URL=${BERTSCOPE_DATABASE_URL:-sqlite:///artifacts/bertscope.db}
+      - BERTSCOPE_MODEL_CACHE_DIR=${BERTSCOPE_MODEL_CACHE_DIR:-artifacts/model-cache}
+    depends_on:
+      redis:
+        condition: service_started
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  gateway:
+    image: nginx:1.27-alpine
+    profiles: ["gateway"]
+    ports:
+      - "8080:80"
+    volumes:
+      - ./deployment/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      api:
+        condition: service_started
+      dashboard:
+        condition: service_started
+
+volumes:
+  redis-data:
+  model-cache:

@@ -1,0 +1,28 @@
+{
+  "masked_language": [
+    {
+      "text": "The company reported record [MASK] this quarter.",
+      "expected_top_tokens": ["earnings", "revenue", "profits"]
+    }
+  ],
+  "financial": [
+    {
+      "text": "Revenue growth was strong, but inflation risk created uncertain guidance.",
+      "expected_terms": {
+        "optimism": ["growth", "strong"],
+        "risk": ["inflation", "risk"],
+        "uncertainty": ["guidance", "uncertain"]
+      }
+    }
+  ],
+  "embeddings": [
+    {
+      "documents": [
+        {"label": "A", "text": "revenue growth demand"},
+        {"label": "B", "text": "strong revenue growth"},
+        {"label": "C", "text": "litigation risk recession"}
+      ],
+      "expected_closest_pair": ["A", "B"]
+    }
+  ]
+}
