@@ -10,6 +10,7 @@
   <img src="https://img.shields.io/badge/BERT-Masked%20Language%20Modeling-yellow?logo=huggingface">
   <img src="https://img.shields.io/badge/Transformers-Explainability-purple?logo=huggingface">
   <img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?logo=streamlit">
+  <img src="https://img.shields.io/badge/Explainable%20AI-Token%20Insights-8A2BE2" alt="Explainable AI">
   <img src="https://img.shields.io/badge/FastAPI-Service-009688?logo=fastapi">
   <img src="https://img.shields.io/badge/PyTorch-Inference-EE4C2C?logo=pytorch">
   <img src="https://img.shields.io/badge/Finance%20NLP-Analytics-green">
@@ -1147,13 +1148,26 @@ Financial NLP outputs should not be treated as investment advice. Sentiment, ris
 
 ---
 
-# 📌 Project Origin
+# 🧠 CS50AI Concepts Applied
 
-This project was inspired by and built as an enhanced extension of the **Attention** project from **Harvard CS50's Introduction to Artificial Intelligence with Python**.
+This project directly extends the transformer-based NLP and attention concepts introduced in the **CS50AI Attention** project.
 
-The original assignment introduced masked language modelling and BERT attention visualization.
+| CS50AI Attention | BERTokenScope |
+|---|---|
+| `[MASK]` Token Prediction | BERT Masked-Language Intelligence |
+| Tokenization | Token-Level Context Exploration |
+| Self-Attention Scores | Attention Maps and Token Relationship Analysis |
+| 12 BERT Layers | Layer-by-Layer Transformer Inspection |
+| 12 Attention Heads per Layer | Head-Level Interpretability |
+| Static Attention Diagrams | Interactive Attention Visualization |
+| Attention Head Analysis | Explainability Reports and Token Insights |
+| Natural Language Sentences | Financial Text, Earnings Language, and Risk Signals |
+| Hugging Face Transformers | Modular Model Adapter Layer |
+| Single-Purpose Python Script | Streamlit Dashboard + FastAPI Backend |
+| Manual Interpretation | Structured NLP Intelligence Workflow |
+| Course Assignment | Production-Style Transformer Explainability Platform |
 
-BERTokenScope expands that idea into a more complete, modular, and production-style transformer explainability platform.
+BERTokenScope demonstrates how foundational transformer and attention concepts can scale into a production-oriented NLP explainability system for analyzing language, context, financial tone, and token-level model behavior.
 
 ---
 
