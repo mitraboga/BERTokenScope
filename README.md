@@ -10,10 +10,10 @@
   <img src="https://img.shields.io/badge/BERT-Masked%20Language%20Modeling-yellow?logo=huggingface">
   <img src="https://img.shields.io/badge/Transformers-Explainability-purple?logo=huggingface">
   <img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?logo=streamlit">
-  <img src="https://img.shields.io/badge/Explainable%20AI-Token%20Insights-8A2BE2" alt="Explainable AI">
   <img src="https://img.shields.io/badge/FastAPI-Service-009688?logo=fastapi">
   <img src="https://img.shields.io/badge/PyTorch-Inference-EE4C2C?logo=pytorch">
   <img src="https://img.shields.io/badge/Finance%20NLP-Analytics-green">
+  <img src="https://img.shields.io/badge/Explainable%20AI-Token%20Insights-8A2BE2" alt="Explainable AI">
 </p>
 
 <img src="assets/bertokenscope-banner.png" alt="BERTokenScope Banner" width="100%">
