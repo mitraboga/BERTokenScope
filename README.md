@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/Explainable%20AI-Token%20Insights-8A2BE2" alt="Explainable AI">
 </p>
 
-<img src="assets/bertokenscope-banner.png" alt="BERTokenScope Banner" width="100%">
+<img src="assets/BERTokenScopeDemo.gif" alt="BERTokenScope Banner" width="100%">
 
 <p align="center">
   <b>Transformer Attention • Masked Token Prediction • Financial NLP • Embedding Intelligence • Model Explainability</b>
