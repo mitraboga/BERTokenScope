@@ -30,7 +30,7 @@
 
 **BERTokenScope** is a transformer explainability and NLP intelligence platform built as an enhanced, production-style extension of the **Harvard CS50AI Attention** project.
 
-The original CS50AI Attention assignment focuses on using BERT to predict masked words and generate static attention diagrams. BERTokenScope takes that foundation and expands it into a full portfolio-grade system for exploring how transformer models understand language, context, token relationships, and finance-specific text signals.
+The original CS50AI Attention assignment focuses on using BERT to predict masked words and generate static attention diagrams. BERTokenScope builds on that foundation to create a full portfolio-grade system for exploring how transformer models understand language, context, token relationships, and finance-specific text signals.
 
 At its core, BERTokenScope answers one powerful question:
 
@@ -87,8 +87,6 @@ BERTokenScope was built to make those signals visible.
 
 ---
 
----
-
 # 🖼️ Dashboard Sections
 
 BERTokenScope is organized into six major dashboard sections. Each section focuses on a different part of transformer explainability, NLP analysis, or model intelligence.
@@ -112,7 +110,7 @@ This section demonstrates how BERT-style masked language models use surrounding 
 - BERT-style masked-token prediction
 - Top-k token probability ranking
 - Reconstructed sentences for each predicted token
-- Deterministic fallback behavior for offline portfolio demos
+- Deterministic fallback behaviour for offline portfolio demos
 - Clear bridge from CS50AI Attention to real NLP model exploration
 
 ---
@@ -144,7 +142,7 @@ This section answers the core question behind BERTokenScope:
 
 ## 3. Explainability Lab
 
-The **Explainability Lab** helps interpret model behavior through token attribution and counterfactual impact analysis.
+The **Explainability Lab** helps interpret model behaviour through token attribution and counterfactual impact analysis.
 
 Instead of only showing a model prediction, this section highlights which words contributed most to the output and how the prediction changes when important tokens are removed.
 
@@ -188,10 +186,6 @@ It analyzes sentiment, risk language, uncertainty, optimism, and financial signa
 - Financial signal visualization
 - Executive tone and business-language analysis
 
----
-
-## 5. Transcript Drift Analysis
-
 The **Transcript Drift Analysis** view expands the Financial NLP section by comparing language across reporting periods.
 
 This is useful for analyzing how a company’s tone changes between quarters, earnings calls, or financial updates. BERTokenScope can show whether sentiment weakened, risk language increased, or uncertainty became more prominent over time.
@@ -213,7 +207,7 @@ Together, the Financial NLP views show how transformer-inspired NLP systems can 
 
 ---
 
-## 6. Embedding Explorer
+## 5. Embedding Explorer
 
 The **Embedding Explorer** uses semantic embeddings to compare documents, transcript excerpts, or company text samples.
 
@@ -237,7 +231,7 @@ That is the same foundation behind modern search, recommendation, and RAG system
 
 ---
 
-## 7. Model Comparison
+## 6. Model Comparison
 
 The **Model Comparison** section benchmarks multiple model families across runtime, confidence, and output behavior.
 
@@ -261,8 +255,6 @@ This section reflects a real production concern:
 
 > The best model is not always the biggest model.  
 > The best model is the one that fits the task, latency, cost, and reliability needs.
-
----
 
 ---
 
