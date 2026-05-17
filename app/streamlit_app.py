@@ -1,8 +1,15 @@
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import streamlit as st
 
-from app.components.charts import (
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from app.components.charts import (  # noqa: E402
     counterfactual_impact_chart,
     embedding_scatter_chart,
     financial_signal_chart,
@@ -14,15 +21,18 @@ from app.components.charts import (
     tone_drift_chart,
     transcript_chunk_chart,
 )
-from attention.engine import AttentionEngine
-from attention.heatmaps import attention_heatmap
-from ber_tokenscope.schemas import EmbeddingDocument
-from embeddings.engine import EmbeddingEngine
-from explainability.engine import ExplainabilityEngine
-from financial_nlp.sentiment import FinancialTextAnalyzer
-from financial_nlp.transcript_analysis import PeriodDocument, TranscriptAnalyzer
-from model_comparison.engine import ModelComparisonEngine
-from observability.tracker import RunTracker
+from attention.engine import AttentionEngine  # noqa: E402
+from attention.heatmaps import attention_heatmap  # noqa: E402
+from ber_tokenscope.schemas import EmbeddingDocument  # noqa: E402
+from embeddings.engine import EmbeddingEngine  # noqa: E402
+from explainability.engine import ExplainabilityEngine  # noqa: E402
+from financial_nlp.sentiment import FinancialTextAnalyzer  # noqa: E402
+from financial_nlp.transcript_analysis import (  # noqa: E402
+    PeriodDocument,
+    TranscriptAnalyzer,
+)
+from model_comparison.engine import ModelComparisonEngine  # noqa: E402
+from observability.tracker import RunTracker  # noqa: E402
 
 
 def configure_page() -> None:
