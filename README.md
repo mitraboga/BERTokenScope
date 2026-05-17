@@ -13,6 +13,7 @@
   <img src="https://img.shields.io/badge/FastAPI-Service-009688?logo=fastapi">
   <img src="https://img.shields.io/badge/PyTorch-Inference-EE4C2C?logo=pytorch">
   <img src="https://img.shields.io/badge/Finance%20NLP-Analytics-green">
+  <img src="https://img.shields.io/badge/Model%20Comparison-BERT%20%7C%20FinBERT%20%7C%20RoBERTa-4B0082" alt="Model Comparison">
   <img src="https://img.shields.io/badge/Explainable%20AI-Token%20Insights-8A2BE2" alt="Explainable AI">
 </p>
 
