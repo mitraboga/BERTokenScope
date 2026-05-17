@@ -1,5 +1,5 @@
 <div align="center">
-
+  
 # BERTokenScope
 
 ### Visualizing How Transformers Understand Language, Context, and Financial Text
@@ -87,31 +87,182 @@ BERTokenScope was built to make those signals visible.
 
 ---
 
-# 🎓 CS50AI Attention → BERTokenScope
+---
 
-## Original CS50AI Attention Project
+# 🖼️ Dashboard Sections
 
-The original CS50AI Attention project asks students to use BERT for masked language modeling.
+BERTokenScope is organized into six major dashboard sections. Each section focuses on a different part of transformer explainability, NLP analysis, or model intelligence.
 
-The course version includes:
+---
 
-- loading a BERT masked language model
-- identifying the `[MASK]` token
-- predicting likely replacement words
-- generating attention diagrams
-- analyzing attention heads
-- writing observations about what different heads appear to learn
+## 1. Masked Word Lab
 
-The project is a strong introduction to transformer internals.
+The **Masked Word Lab** extends the original CS50AI Attention project’s `[MASK]` prediction workflow into an interactive dashboard experience.
 
-But it is intentionally limited in scope.
+Users enter a sentence containing a masked token, select a `Top K` value, and run prediction. BERTokenScope then returns the most likely replacement tokens along with probabilities and reconstructed sentence outputs.
 
-It focuses mainly on:
+This section demonstrates how BERT-style masked language models use surrounding context to infer missing words.
 
-- static scripts
-- local inference
-- attention image generation
-- manual analysis
+<p align="center">
+  <img src="assets/Dashboard_1.png" alt="BERTokenScope Masked Word Lab" width="95%">
+</p>
+
+### What This Section Shows
+
+- BERT-style masked-token prediction
+- Top-k token probability ranking
+- Reconstructed sentences for each predicted token
+- Deterministic fallback behavior for offline portfolio demos
+- Clear bridge from CS50AI Attention to real NLP model exploration
+
+---
+
+## 2. Attention Explorer
+
+The **Attention Explorer** visualizes how tokens attend to each other across transformer layers and heads.
+
+Users can input a sentence, choose a layer and attention head, and inspect token-to-token attention patterns through heatmaps and rollout visualizations. This makes transformer internals easier to understand instead of treating the model like a black box.
+
+<p align="center">
+  <img src="assets/Dashboard_2.png" alt="BERTokenScope Attention Explorer" width="95%">
+</p>
+
+### What This Section Shows
+
+- Layer-by-layer attention inspection
+- Head-by-head transformer analysis
+- Token-to-token attention heatmaps
+- Attention rollout visualization
+- Strongest token link extraction
+- Head diagnostics such as entropy and focus score
+
+This section answers the core question behind BERTokenScope:
+
+> **What is the model paying attention to?**
+
+---
+
+## 3. Explainability Lab
+
+The **Explainability Lab** helps interpret model behavior through token attribution and counterfactual impact analysis.
+
+Instead of only showing a model prediction, this section highlights which words contributed most to the output and how the prediction changes when important tokens are removed.
+
+<p align="center">
+  <img src="assets/Dashboard_3.png" alt="BERTokenScope Explainability Lab" width="95%">
+</p>
+
+### What This Section Shows
+
+- Prediction label and confidence score
+- Token-level attribution scores
+- Important financial and contextual words
+- Counterfactual token impact
+- Prediction score changes after token removal
+- Explainable AI workflow for transformer-style NLP systems
+
+This makes the model easier to reason about.
+
+Not just **what did it predict?**
+
+But **why did it predict that?**
+
+---
+
+## 4. Financial NLP Intelligence
+
+The **Financial NLP Intelligence** section applies NLP analysis to financial text, earnings-style language, and executive communication.
+
+It analyzes sentiment, risk language, uncertainty, optimism, and financial signal strength from user-provided text. This turns BERTokenScope from a general NLP demo into a more domain-aware financial AI tool.
+
+<p align="center">
+  <img src="assets/Dashboard_4.png" alt="BERTokenScope Financial NLP Intelligence Single Text Analysis" width="95%">
+</p>
+
+### What This Section Shows
+
+- Financial sentiment classification
+- Risk language scoring
+- Uncertainty scoring
+- Optimism scoring
+- Financial signal visualization
+- Executive tone and business-language analysis
+
+---
+
+## 5. Transcript Drift Analysis
+
+The **Transcript Drift Analysis** view expands the Financial NLP section by comparing language across reporting periods.
+
+This is useful for analyzing how a company’s tone changes between quarters, earnings calls, or financial updates. BERTokenScope can show whether sentiment weakened, risk language increased, or uncertainty became more prominent over time.
+
+<p align="center">
+  <img src="assets/Dashboard_5.png" alt="BERTokenScope Financial NLP Transcript Drift Analysis" width="95%">
+</p>
+
+### What This Section Shows
+
+- Period-over-period financial tone comparison
+- Sentiment drift
+- Risk-language increase or decrease
+- Uncertainty trend analysis
+- Transcript chunk diagnostics
+- Executive summary generation for financial language changes
+
+Together, the Financial NLP views show how transformer-inspired NLP systems can support business intelligence and analyst workflows.
+
+---
+
+## 6. Embedding Explorer
+
+The **Embedding Explorer** uses semantic embeddings to compare documents, transcript excerpts, or company text samples.
+
+Embeddings convert text into numerical vectors, allowing BERTokenScope to measure meaning-based similarity between documents. This supports semantic search, clustering, document comparison, and future retrieval-augmented analysis workflows.
+
+<p align="center">
+  <img src="assets/Dashboard_6.png" alt="BERTokenScope Embedding Explorer" width="95%">
+</p>
+
+### What This Section Shows
+
+- Semantic embedding map
+- Document similarity matrix
+- Closest document pair ranking
+- Company or transcript similarity analysis
+- Foundation for semantic search and retrieval workflows
+
+This section shows how language can be transformed into vector space.
+
+That is the same foundation behind modern search, recommendation, and RAG systems.
+
+---
+
+## 7. Model Comparison
+
+The **Model Comparison** section benchmarks multiple model families across runtime, confidence, and output behavior.
+
+It compares masked-language models, financial-sentiment models, and embedding models. This helps evaluate tradeoffs between speed, confidence, model type, and task suitability.
+
+<p align="center">
+  <img src="assets/Dashboard_7.png" alt="BERTokenScope Model Comparison Dashboard" width="95%">
+</p>
+
+### What This Section Shows
+
+- Model runtime comparison
+- Model confidence comparison
+- Masked-language model outputs
+- Financial sentiment model outputs
+- Embedding model outputs
+- Latency and confidence benchmarking
+- Practical model-selection workflow
+
+This section reflects a real production concern:
+
+> The best model is not always the biggest model.  
+> The best model is the one that fits the task, latency, cost, and reliability needs.
+
+---
 
 ---
 
