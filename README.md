@@ -421,7 +421,7 @@ It can support:
 
 The goal is not just to show the model’s answer.
 
-The goal is to explain the model’s behavior.
+The goal is to explain the model’s behaviour.
 
 ---
 
@@ -440,7 +440,7 @@ Modified: The company reported demand.
 
 If removing `weak` changes the sentiment or prediction score, then `weak` was likely important.
 
-This helps make model behavior more understandable.
+This helps make model behaviour more understandable.
 
 ---
 
@@ -665,7 +665,7 @@ Executive Tone: Defensive
 
 ```text
 Counterfactual Impact:
-Removing "weaker" reduced negative tone score by 34%.
+Removing "weaker" reduced the negative tone score by 34%.
 ```
 
 ---
@@ -680,9 +680,9 @@ This is the heart of transformer-based language understanding.
 
 ---
 
-## Masked Language Modeling
+## Masked Language Modelling
 
-Masked language modeling trains a model to predict missing words from context.
+Masked language modelling trains a model to predict missing words from context.
 
 BERT was trained using this objective.
 
@@ -694,7 +694,7 @@ BERTokenScope uses this idea to show how context shapes prediction.
 
 Instead of only seeing the final model output, BERTokenScope exposes token relationships.
 
-This helps explain the model’s internal behavior.
+This helps explain the model’s internal behaviour.
 
 ---
 
@@ -724,64 +724,9 @@ This enables:
 
 ## Explainable AI
 
-Explainable AI focuses on making model behavior understandable to humans.
+Explainable AI focuses on making model behaviour understandable to humans.
 
 BERTokenScope supports this through attention analysis, token attribution, counterfactuals, and structured reports.
-
----
-
-# 🧰 Tech Stack
-
-## Core Language
-
-- Python 3.12
-
-## Frontend / Dashboard
-
-- Streamlit
-
-## Backend
-
-- FastAPI
-- Uvicorn
-
-## NLP / ML
-
-- Hugging Face Transformers
-- BERT-compatible masked language models
-- FinBERT-compatible finance models
-- PyTorch
-- Tokenizers
-- Embedding models
-
-## Data / Analytics
-
-- NumPy
-- pandas
-- scikit-learn
-- SQLite
-- JSON artifacts
-
-## Visualization
-
-- Streamlit charts
-- Attention heatmaps
-- Token relationship tables
-- Embedding map hooks
-- Dimensionality reduction scaffolding
-
-## DevOps / Production Readiness
-
-- Docker
-- Docker Compose
-- CI checks
-- API contract tests
-- Structured logging
-- Request IDs
-- Health checks
-- Rate limiting scaffolding
-- Security headers
-- API key authentication
 
 ---
 
