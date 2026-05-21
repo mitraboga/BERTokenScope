@@ -1,6 +1,6 @@
 <div align="center">
   
-# BERTokenScope
+# 🪙 BERTokenScope 📁
 
 ### Visualizing How Transformers Understand Language, Context, and Financial Text
 
